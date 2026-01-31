@@ -1,8 +1,23 @@
 import { ImageBackground } from "expo-image";
+import { router } from "expo-router";
+import { useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 
 export default function SplashScreen() {
+     // useeffect executa o código quando o componente é motado 
+     useEffect (() => {
+        // Após 1.5 segundos, redireciona para tela de login
+      const tempo = setTimeout(() => {
+        router.replace("/(auth)/login"); // replace substitui a rota atual (impedindo voltar para splash)
+        
+      }, 1500);
+       
+      // função de limpeza: remove o timeout quando o componente é desmontado
+      return () => clearTimeout (tempo)
+
+     }, []); // Array vazio = executa apenas uma vez
+
     return (
         <View style={style.safe}>
             <ImageBackground 

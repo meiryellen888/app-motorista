@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { useState } from "react";
 import { ImageBackground, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,12 +16,17 @@ export default function Login() {
     // usuario armazena o valor atual do campo de usuário
     // setusuario é a função que atualiza o valor de usuario
 
+    // Função chamada ao pressionar o botão entrar
     const [ senha, setSenha] = useState ("");
     const [usuario, setusuario] = useState("");
 
+    // Função chamada ao pressionar o botão entrar
     const onEntra = () => {
         console.log("Usuário:", usuario);
         console.log("Senha:", senha);
+     
+        //TODO: desvalidar e autenticamos de verdade no beckend
+        router.replace("/(tabs)"); // Navega para as abas principais do app
     }
 
     
@@ -63,7 +69,7 @@ export default function Login() {
                            </Text>
 
                            {/** Campo de entrada do usuário */}
-                           <View style={ styles.imputRoW}>
+                           <View style={ styles.inputRow}>
 
                             <TextInput
                             value= {usuario} // valor controlado pelo estado
@@ -83,7 +89,7 @@ export default function Login() {
                            {/** Linha inferior do campo de entrada */}
                            <View style={styles.underline}/>
 
-                           <View style= { styles.InputRow}>
+                           <View style= { styles.inputRow}>
                             <TextInput 
                               value= {senha} // valor controlado pelo estado
                               onChangeText= {setSenha} // atualiza o estado quando o texto muda
@@ -182,5 +188,49 @@ const styles = StyleSheet.create({
         textAlign: 'center', // 
         marginBottom: 22,
 
-    }
+    },
+
+    subtitle: {
+        fontSize: 16, // tamanho de (texto médio)
+        color: "#333", 
+        textAlign: "center", // alinha texto ao centro
+        lineHeight: 22, 
+        marginBottom: 46,
+    },
+
+    inputRow: {
+        flexDirection: "row", // organiza TextInput e icone lado a lado
+        alignItems: "center", // alinhar intens ao centro
+        justifyContent: "space-between",
+        paddingVertical: 12, 
+    },
+    
+    input: {
+       flex: 1,
+       fontSize: 18,
+       color: "#111",
+       paddingRight: 12,
+    },
+
+    underline: {
+        height: 1.4, // altura da linha
+        backgroundColor: "#4B3f72",
+        opacity: 0.65,
+        marginBottom: 22, 
+    },
+
+    button: {
+        marginTop: 26,
+        backgroundColor: "#0A84FF",
+        paddingVertical: 14, 
+        borderRadius: 999,
+        alignItems: "center",
+    },
+
+    buttonText : {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "700",
+    },
+
 })

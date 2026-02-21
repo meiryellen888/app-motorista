@@ -1,4 +1,3 @@
-import DashBoardHeader from "@/components/dashboard/DashBoardHeader";
 import SegmentoTabs from "@/components/dashboard/SegmentoTabs";
 import VeiculoCArd from "@/components/dashboard/VeiculosCard";
 import { useMemo, useState } from "react";
@@ -54,10 +53,7 @@ export default function DashbBoardScreen () {
     // View raiz que ocupa toda a altura disponivel com fundo branco
     <View style={styles.safe}>
       {/** Cabeçalho personalizado do dashBoard  */}
-    <DashBoardHeader
-    appName= "Meu app Motorista"
-    userName= "Meiryellen Proença" 
-    />
+
 
     <ScrollView 
     contentContainerStyle={styles.content}
@@ -143,7 +139,7 @@ placeholder: {
 placeholderText: {
   fontSize: 14,
   color: "#444",
-  
+
 
 }
 

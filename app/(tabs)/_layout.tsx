@@ -1,19 +1,31 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 
+import DashBoardHeader from '@/components/dashboard/DashBoardHeader';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Ionicons } from '@expo/vector-icons';
+import { View } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
+    <View style={{flex: 1}}>
+
+      <DashBoardHeader
+        appName='App Motorista'
+        userName= 'Meiryellen Proença'
+      
+      />
+
+
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown : false, 
-
+   
+        
         // estilo da barra inferior
         tabBarStyle: {
           position: "absolute",
@@ -124,5 +136,6 @@ export default function TabLayout() {
       
     </Tabs>
 
+     </View> 
   );
 }

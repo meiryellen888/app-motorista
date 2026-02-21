@@ -9,7 +9,7 @@ type Veiculo = {
     model: string; // modelo do veiculo
     placa: string; // placa do veiculo
     motorista: string; // nome do motorista
-    localização: string; // localização atual
+    localizacao: string; // localização atual
     image: ImageSourcePropType // Imagem do veiculo 
 };
 
@@ -22,7 +22,7 @@ export default function VeiculoCArd ({veiculo}: Props) {
     return(
         <View style= {styles.card}>
         <View style={styles.left}>
-        <Text style= {styles.brad}> {veiculo.brand}</Text>
+        <Text style= {styles.brand}> {veiculo.brand}</Text>
         <Text style= {styles.model}> {veiculo.model}</Text>
        
        {/** bloco com metadados: placa do motorista */}
@@ -62,6 +62,58 @@ const styles = StyleSheet.create ({
         flexDirection: "row", // disposição em linha
         alignItems: "flex-end", // Alinha os itens no final verticalmente
         justifyContent: "space-between", // Espaçamento do inicio e final dos itens
+    },
+
+    // container dos textos
+    left: {
+        flex: 1,
+        gap: 8,
+    },
+
+    // Marca do carro
+    brand:{
+        color: "#EAF2FF",
+        fontSize: 16,
+        fontWeight: "500",
+    },
+
+    // Modelo do carro
+    model: {
+        color: "#ffffff",
+        fontSize: 28,
+        fontWeight: "900",
+        lineHeight: 36,
+    },
+   
+    // Container de Metadados (placa e motorista)
+    meta: {
+        gap: 2,
+        marginTop: 6,
+    
+    },
+
+    //Meta texto
+    metaText: {
+        color: "#EAF2FF",
+        fontSize: 14,
+        fontWeight: "500",
+    },
+
+    localizacao: {
+        color: "#EAF2FF",
+        fontSize: 14,
+        fontWeight: "700",
+        marginTop: 8,
+    },
+
+    image: {
+        width: 160,
+        height: 100,
+        marginLeft: 10,
     }
+
+    
+
+
         
 })

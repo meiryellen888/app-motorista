@@ -2,7 +2,7 @@ import DashBoardHeader from "@/components/dashboard/DashBoardHeader";
 import SegmentoTabs from "@/components/dashboard/SegmentoTabs";
 import VeiculoCArd from "@/components/dashboard/VeiculosCard";
 import { useMemo, useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 /** Define o tipo de abas disponiveis no dashboard 
  * Garante que apenas valores validos sejam usados em toda aplicação
@@ -29,9 +29,9 @@ export default function DashbBoardScreen () {
         id: "1", // ID único para a chave React
         brand: "Chevrolet", // Marca do veículo
         model: "Trailblazer", // Modelo
-        plate: "ABC123", // Placa de identificação
-        agent: "Marta Santos", // Motorista/agente responsável
-        location: "Perto da rua xyz", // Localização atual
+        placa: "ABC123", // Placa de identificação
+        motorista: "Marta Santos", // Motorista/agente responsável
+        localizacao: "Perto da rua xyz", // Localização atual
         image: require("../../assets/images/trailblazerhcazuleclipse-2-2.png"), // Imagem do carro
       },
       // Segundo veículo - Chevrolet Trailblazer preto
@@ -39,9 +39,9 @@ export default function DashbBoardScreen () {
         id: "2",
         brand: "Chevrolet",
         model: "Trailblazer",
-        plate: "ABC123",
-        agent: "Lucas Alves",
-        location: "Perto da rua DFG",
+        placa: "ABC123",
+        motorista: "Lucas Alves",
+        localizacao: "Perto da rua DFG",
         image: require("../../assets/images/Trailblazer-Preto-Ouro-Negro1.png"),
       },
     ],
@@ -52,7 +52,7 @@ export default function DashbBoardScreen () {
   return (
 
     // View raiz que ocupa toda a altura disponivel com fundo branco
-    <View>
+    <View style={styles.safe}>
       {/** Cabeçalho personalizado do dashBoard  */}
     <DashBoardHeader
     appName= "Meu app Motorista"
@@ -63,6 +63,8 @@ export default function DashbBoardScreen () {
     contentContainerStyle={styles.content}
     showsHorizontalScrollIndicator={false}
     >
+
+      <Text style={styles.title}> Dashboard de Monitoramento</Text>
 
     <SegmentoTabs<TabKey>
       items ={["Veículo", "Mapas", "Alertas", "Bloqueios"]}
@@ -81,6 +83,17 @@ export default function DashbBoardScreen () {
       </View>
     )}
 
+    {ativoTab !== "Veículo" && (
+      <View style= {styles.placeholder}>
+        <Text style={styles.placeholderText}>
+          Conteúdo da Aba: {ativoTab}
+
+
+        </Text>
+
+      </View>
+    )}
+
     </ScrollView>
 
     </View>
@@ -90,5 +103,49 @@ export default function DashbBoardScreen () {
 }
 
 const styles = StyleSheet.create({
+
+
+safe: {
+  flex: 1,
+  backgroundColor: "#ffff",
+},
+
+content: {
+  paddingHorizontal: 16,
+  paddingTop: 14,
+  paddingBottom: 90,
+
+},
+
+title: {
+  textAlign: "center",
+  fontSize: 18,
+  fontWeight: "700",
+  color: "#111",
+  marginBottom: 12,
+
+},
+
+lista: {
+  gap: 16,
+  marginTop: 18,
+
+},
+
+placeholder: {
+  marginTop: 24,
+  padding: 16,
+  borderRadius: 16,
+  backgroundColor: "#f3f4f6",
+
+},
+
+placeholderText: {
+  fontSize: 14,
+  color: "#444",
+  
+
+}
+
 
 })
